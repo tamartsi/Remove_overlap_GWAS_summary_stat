@@ -395,12 +395,12 @@ inversing the action of meta-analysis.</p>
 <h2>Explaining fixed effect inverse variance meta-analysis</h2>
 <p>Inverse-variance fixed effects meta-analysis (usually performed by
 large GWAS meta-analysis efforts) when combining two studies: Let <span class="math inline">\(\hat{\beta_1}, \hat{\beta_2}\)</span> be the
-effect estimates from study 1 and study 2. Let <span class="math inline">\(\hat{v_1}, \hat_{v_2}\)</span> be their estimated
+effect estimates from study 1 and study 2. Let <span class="math inline">\(\hat{v_1}, \hat{v_2}\)</span> be their estimated
 variances. Let <span class="math inline">\(w_1 = \frac{1}{\hat{v_1}},
 w_2 = \frac{1}{\hat{v_2}}\)</span>, Than:</p>
-<p><span class="math display">\[
-\hat{\beta} = \frac{w_1 \hat{\beta_2} + w_2\hat{\beta_2} }{w_1 + w_2}
-\]</span> And <span class="math display">\[
+<p><span class="math inline">\(\hat{\beta} = \frac{w_1 \hat{\beta_2} +
+w_2\hat{\beta_2} }{w_1 + w_2}\)</span></p>
+<p>And <span class="math display">\[
 \hat{v} = \hat{var(\hat{\beta})} = \frac{w_1^2 \hat{v_1} +
 w_2^2\hat{v_2} }{(w_1 + w_2)^2} = \frac{w_1 + w_2}{(w_1 + w_2)^2} =
 \frac{1}{w_1 + w_2}

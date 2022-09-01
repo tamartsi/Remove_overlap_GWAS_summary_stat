@@ -16,11 +16,11 @@ Suppose that we have summary statistics from a large GWAS or from a meta-analysi
 
 ## Explaining fixed effect inverse variance meta-analysis
 Inverse-variance fixed effects meta-analysis (usually performed by large GWAS meta-analysis efforts) when  combining two studies: 
-Let $\hat{\beta_1}, \hat{\beta_2}$ be the effect estimates from study 1 and study 2. Let $\hat{v_1}, \hat_{v_2}$ be their estimated variances. Let $w_1 = \frac{1}{\hat{v_1}}, w_2 = \frac{1}{\hat{v_2}}$, Than:
+Let $\hat{\beta_1}, \hat{\beta_2}$ be the effect estimates from study 1 and study 2. Let $\hat{v_1}, \hat{v_2}$ be their estimated variances. Let $w_1 = \frac{1}{\hat{v_1}}, w_2 = \frac{1}{\hat{v_2}}$, Than:
 
-\[
-\hat{\beta} = \frac{w_1 \hat{\beta_2} + w_2\hat{\beta_2} }{w_1 + w_2}
-\]
+
+$\hat{\beta} = \frac{w_1 \hat{\beta_2} + w_2\hat{\beta_2} }{w_1 + w_2}$
+
 And
 \[
 \hat{v} = \hat{var(\hat{\beta})} = \frac{w_1^2 \hat{v_1} + w_2^2\hat{v_2} }{(w_1 + w_2)^2} = \frac{w_1 + w_2}{(w_1 + w_2)^2} = \frac{1}{w_1 + w_2}
