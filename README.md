@@ -1,0 +1,35 @@
+
+# Removing effect of overlapping GWAS from summary statistics
+## Context
+Suppose that we have summary statistics from a large GWAS or from a meta-analysis. We want to use the summary statistics, e.g. to create a polygenic risk score, in a set of individuals who participated in the GWAS. To prevent overfitting, we want to remove the contribution of these individuals from the summary statistics. For example, we may run a GWAS only on these individuals, and then "remove" their effect by inversing the action of meta-analysis. 
+
+## Explaining fixed effect inverse variance meta-analysis
+Inverse-variance fixed effects meta-analysis (usually performed by large GWAS meta-analysis efforts) when  combining two studies: 
+Let $\hat{\beta_1}, \hat{\beta_2}$ be the effect estimates from study 1 and study 2. Let $\hat{v_1}, \hat{v_2}$ be their estimated variances. Let $w_1 = \frac{1}{\hat{v_1}}, w_2 = \frac{1}{\hat{v_2}}$, Then:
+
+
+$\hat{\beta} = \frac{w_1 \hat{\beta_2} + w_2\hat{\beta_2} }{w_1 + w_2}$
+
+And
+
+$\hat{v} = \hat{var(\hat{\beta})} = \frac{w_1^2 \hat{v_1} + w_2^2\hat{v_2} }{(w_1 + w_2)^2} = \frac{w_1 + w_2}{(w_1 + w_2)^2} = \frac{1}{w_1 + w_2}$
+
+
+The same formula straightforwardly extends for an arbitrary number of studies. Further, it can be easily shown that the meta-analytic estimator over m studies will be the same regardless of the order of the meta-analysis, meaning, that one can first meta-analyze statistics from studies 1 and 2, next from studies 3 and 4, and finally meta-analyze the results of these two meta-analyses, and receive the same results as from a meta-analysis of the four studies at the same time. 
+
+## Inversing meta-analysis to remove effect of overlapping individuals 
+
+Therefore, if we have meta-analysis results from m studies, and we can obtain (or compute) the meta-analysis results from a subset of $m_1$ studies, we can “back compute” the results from the $m-m_1$ studies. We also assume that the meta-analysis results from $m_1$ studies are the same as a pooled-summary statistics GWAS results for the same $m_1$ studies (even though likely the results are not precisely the same due to different modelling). 
+
+Suppose that we had $\hat{\beta}$, $\hat{v}$ (the meta-analytic estimator of all studies), and $\hat{\beta_1}, \hat{v_1}$  estimates from $m_1$ studies, a subset of these studies, together. We want to compute the estimates $\hat{\beta_2}, \hat{v_2}$ because these are independent of our  $m_1$ studies and using them will prevent overfitting when computing polygenic risk models. 
+
+Clearly:
+ 
+ $\hat{v_2} = \frac{1}{w_2} = \frac{\hat{v}}{1-w_1\hat{v}} = \frac{\hat{v}}{1-\hat{v}/\hat{v_1}}$
+ 
+And: 
+
+$\hat{\beta_2} = \frac{\hat{\beta}(w_1 + w_2) - w_1\hat{\beta_1}}{w_2}$
+
+These can be used to compute p-values of the variants based on the non-overlapping sample of $m_2$ studies from the original meta-analysis. 
+ 
