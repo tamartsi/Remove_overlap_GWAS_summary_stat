@@ -397,14 +397,13 @@ inversing the action of meta-analysis.</p>
 large GWAS meta-analysis efforts) when combining two studies: Let <span class="math inline">\(\hat{\beta_1}, \hat{\beta_2}\)</span> be the
 effect estimates from study 1 and study 2. Let <span class="math inline">\(\hat{v_1}, \hat{v_2}\)</span> be their estimated
 variances. Let <span class="math inline">\(w_1 = \frac{1}{\hat{v_1}},
-w_2 = \frac{1}{\hat{v_2}}\)</span>, Than:</p>
+w_2 = \frac{1}{\hat{v_2}}\)</span>, Then:</p>
 <p><span class="math inline">\(\hat{\beta} = \frac{w_1 \hat{\beta_2} +
 w_2\hat{\beta_2} }{w_1 + w_2}\)</span></p>
-<p>And <span class="math display">\[
-\hat{v} = \hat{var(\hat{\beta})} = \frac{w_1^2 \hat{v_1} +
-w_2^2\hat{v_2} }{(w_1 + w_2)^2} = \frac{w_1 + w_2}{(w_1 + w_2)^2} =
-\frac{1}{w_1 + w_2}
-\]</span></p>
+<p>And</p>
+<p><span class="math inline">\(\hat{v} = \hat{var(\hat{\beta})} =
+\frac{w_1^2 \hat{v_1} + w_2^2\hat{v_2} }{(w_1 + w_2)^2} = \frac{w_1 +
+w_2}{(w_1 + w_2)^2} = \frac{1}{w_1 + w_2}\)</span></p>
 <p>The same formula straightforwardly extends for an arbitrary number of
 studies. Further, it can be easily shown that the meta-analytic
 estimator over m studies will be the same regardless of the order of the
@@ -430,12 +429,13 @@ studies, together. We want to compute the estimates <span class="math inline">\(
 are independent of our <span class="math inline">\(m_1\)</span> studies
 and using them will prevent overfitting when computing polygenic risk
 models.</p>
-<p>Clearly: <span class="math display">\[
-\hat{v_2} = \frac{1}{w_2} = \frac{\hat{v}}{1-w_1\hat{v}} =
-\frac{\hat{v}}{1-\hat{v}/\hat{v_1}}
-\]</span> And: <span class="math display">\[
-\hat{\beta_2} = \frac{\hat{\beta}(w_1 + w_2) - w_1\hat{\beta_1}}{w_2}
-\]</span></p>
+<p>Clearly:</p>
+<p><span class="math inline">\(\hat{v_2} = \frac{1}{w_2} =
+\frac{\hat{v}}{1-w_1\hat{v}} =
+\frac{\hat{v}}{1-\hat{v}/\hat{v_1}}\)</span></p>
+<p>And:</p>
+<p><span class="math inline">\(\hat{\beta_2} = \frac{\hat{\beta}(w_1 +
+w_2) - w_1\hat{\beta_1}}{w_2}\)</span></p>
 <p>These can be used to compute p-values of the variants based on the
 non-overlapping sample of <span class="math inline">\(m_2\)</span>
 studies from the original meta-analysis.</p>
